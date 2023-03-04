@@ -233,14 +233,19 @@ class UserSeeder extends Seeder
     /**
      * Returns an email.
      *
+     * @param null|string $from If specified it creates email from
      * @return string
      */    
-    public function email(): string
+    public function email(null|string $from = null): string
     {
-        if (Num::bool()) {
-            $name = $this->fullnameFemale('.');
+        if (!empty($from)) {
+            $name = Str::replace($from, [' ' => '.']);
         } else {
-            $name = $this->fullnameMale('.');
+            if (Num::bool()) {
+                $name = $this->fullnameFemale('.');
+            } else {
+                $name = $this->fullnameMale('.');
+            }            
         }
         
         $name = strtolower($name);
