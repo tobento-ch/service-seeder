@@ -510,7 +510,7 @@ var_dump($seed->locale([])->country());
 | **postcode** | | postcodes | Returns a random postcode. |
 | **city** | | cities | Returns a random city. |
 | **country** | | countries | Returns a random country. |
-| **email** | | domains, firstnamesFemale, firstnamesMale, lastnames | Returns a random email. |
+| **email** | from: null | domains, firstnamesFemale, firstnamesMale, lastnames | Returns a random email. It will create the email based on the from parameter if specified. |
 | **smartphone** | | smartphones | Returns a random smartphone number. |
 | **telephone** | | telephones | Returns a random telephone number. |
 | **password** | |  | Returns a random password. |
