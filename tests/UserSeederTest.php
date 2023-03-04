@@ -397,6 +397,26 @@ class UserSeederTest extends TestCase
         $this->assertTrue(is_string($seed->email()));
     }
     
+    public function testEmailMethodWithFromSepcified()
+    {
+        $seed = new Seed(
+            resources: new Resources(           
+                new Resource('domains', 'en', ['example.com']),
+                new Resource('firstnamesFemale', 'en', ['Tina']),
+                new Resource('firstnamesMale', 'en', ['Tina']),
+                new Resource('lastnames', 'en', ['Pitt']),
+            ),
+            locale: 'en',
+        );
+
+        $seed->addSeeder('user', new UserSeeder($seed));
+
+        $this->assertSame('a@example.com', $seed->email(from: 'A'));
+        $this->assertSame('tina.pitt@example.com', $seed->email(from: ''));
+        $this->assertSame('hans@example.com', $seed->email(from: 'Hans'));
+        $this->assertSame('hans.affolter@example.com', $seed->email(from: 'Hans Affolter'));
+    }    
+    
     public function testSmartphoneMethod()
     {
         $seed = new Seed(
