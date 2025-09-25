@@ -14,10 +14,8 @@ declare(strict_types=1);
 namespace Tobento\Service\Seeder;
 
 use InvalidArgumentException;
+use Random\Randomizer;
 
-/**
- * Num
- */
 class Num
 {
     /**
@@ -55,7 +53,7 @@ class Num
      */
     public static function float(float $min, float $max): float
     {
-        return ($min+lcg_value()*(abs($max-$min)));
+        return new Randomizer()->getFloat(min: $min, max: $max);
     }
     
     /**
