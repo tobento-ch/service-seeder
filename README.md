@@ -833,7 +833,7 @@ use Tobento\Service\Dir\Dirs;
 use Tobento\Service\Seeder\ResourcesInterface;
 
 $resources = new FilesResources(
-    (new Dirs())->dir(dir: 'private/seeder/')
+    new Dirs()->dir(dir: 'private/seeder/')
 );
 
 var_dump($resources instanceof ResourcesInterface);
@@ -904,7 +904,7 @@ class CustomResourceFactory extends ResourceFactory
 }
 
 $resources = new FilesResources(
-    (new Dirs())->dir(dir: 'private/seeder/'),
+    new Dirs()->dir(dir: 'private/seeder/'),
     new CustomResourceFactory()
 );
 ```
